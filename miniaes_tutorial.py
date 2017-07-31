@@ -11,7 +11,6 @@ Disclaimer:
 def start(): 
 #offer to tell people about nibbles. 
     putty=input('For the following, please type yes or no. Would you like to hear about nibbles, which are the components of miniaes?')
-    label: backnibble
     if putty=='yes': 
         putty=input('A nibble\'s size is four bits. It can be thought as a finite field. Dou you know what a finite field is? ')
         if putty=='no': 
@@ -22,10 +21,14 @@ def start():
                 print('Fields are a very thouroghly researched subject in maths. I would refer you the paper this program is based on. ' + 
                         'You can find it here: http://staff.guilan.ac.ir/staff/users/rebrahimi/fckeditor_repo/file/mini-aes-spec.pdf')
     elif putty=='no':
-        continue
+        pass
     else: 
         putty=input('Sorry, I did not understand. Would you like to hear about nibbles? Type yes or no')
-        goto backnibble
+
+#blocksize
+    print('In AES, a block generally consists of 128 bits of plaintext that is turned in 128 bits of ciphertext and vice versa. '+
+            'For mini-AES, we are going to use blocks of 16 bit size. ')
+
 
 #modes of operation
     putty=input('Would you like to know how the ciphertext is generated from the plaintext?')
