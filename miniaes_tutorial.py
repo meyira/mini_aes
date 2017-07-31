@@ -64,6 +64,7 @@ def start():
               'codebook mode in AES. It should not be used in real programs\n')
 
 # and now start encryption
+# starting here, input() is used, so the user can read in their own time
     print('Now we know a bit about the internal functions, ' +
           'how about starting to encrypt our own message with mini aes?')
     plaintext = input('Put any text you would like to encrypt here: \n')
@@ -76,9 +77,14 @@ def start():
         '\nb0, b2 \n' +
         'b1, b3 \n' +
         'Where b is a single bit in the nibble. \n \n')
+
+# explanation of the four main components
+
+# NibbleSub explanation
     input('Now we can do fun stuff with the nibble matrixes. ' +
           'There are four operations: NibbleSub, which substitutes ' +
           '(replaces) a nibble with another one. \n')
+# ShiftRow explanation
     input(
         'There is also ShiftRow, which switches the lower row of the matrix.' +
         ' It then looks like this: \n' +
@@ -87,6 +93,16 @@ def start():
         'instead of: \n' +
         'b0, b2 \n' +
         'b1, b3 \n')
+# MixColumn explanation
+    input('In MixColumn, each column of the input block is multiplied ' +
+          'with a constant matrix to get a new column. If you do not ' +
+          'understand matrix multiplication, you should read into it ' +
+          'before you continue. \n')
+# TODO ESSLINGER matrix or vector?
+# KeyAddition
+    input('You may have wondered where the key is. It is used for the last ' +
+          'operation, the KeyAddition. For this, the bock is XORed (' +
+          'exclusive OR) with the key. ')
 
 
 start()
