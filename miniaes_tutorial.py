@@ -3,7 +3,7 @@ Disclaimer:
     Most of the explanations, though adjusted and simplified, are taken from
     http://staff.guilan.ac.ir/staff/users/rebrahimi/fckeditor_repo/file/mini-aes-spec.pdf
 :author: Lena Heimberger
-:date: 31-07-2017
+:date: 2017-07-31
 """
 
 
@@ -11,8 +11,8 @@ def start():
     # offer to tell people about nibbles.
     putty = input(
         'For the following, please type yes or no. ' +
-        'Would you like to hear about nibbles, ' +
-        'which are the components of miniaes? ')
+        'Would you like to hear about details(nibbles), ' +
+        'which are the components of mini-AES? ')
     if putty == 'yes':
         putty = input(
             'A nibble\'s size is four bits. ' +
@@ -29,9 +29,9 @@ def start():
             putty = input('Would you like to hear more about fields?')
             if putty == 'yes':
                 print(
-                    'Explaining fields so everybody would understand them ' +
-                    'exceed this program\'s scope. For further reference, ' +
-                    'I would refer you the paper this program is based on. ' +
+                    'Explaining fields so everybody understands them ' +
+                    'exceeds this program\'s scope. For further reference, ' +
+                    'please refer you the paper this program is based on. ' +
                     'You can find it here: ' +
                     'http://staff.guilan.ac.ir/staff/users/rebrahimi/' +
                     'fckeditor_repo/file/mini-aes-spec.pdf')
@@ -48,7 +48,7 @@ def start():
     print(
         'In AES, a block generally consists of 128 bits of plaintext that is' +
         ' turned in 128 bits of ciphertext and vice versa. ' +
-        'For mini-AES, we are going to use blocks of 16 bit size. \n')
+        'For mini-AES, we are going to use blocks of 16 bit size.\n')
 
 
 # modes of operation
@@ -61,44 +61,45 @@ def start():
               'Mini-AES does not. It just encrypts block by block with the' +
               'key, without taking the result of the previous block in ' +
               'account. This is equivalent to the insecure electronic ' +
-              'codebook mode in AES. It should not be used in real programs\n')
+              'codebook mode in AES. It should not be used in real programs.')
 
 # and now start encryption
 # starting here, input() is used, so the user can read in their own time
+# they are instructed to press enter as soon as they have finished reading
+# a section
     print('Now we know a bit about the internal functions, ' +
-          'how about starting to encrypt our own message with mini aes?')
-    plaintext = input('Put any text you would like to encrypt here: \n')
+          'how about starting to encrypt our own message with mini-AES?')
+    plaintext = input('Enter the text you would like to encrypt here:\n')
     input('And now please press enter to continue step by step. ')
     input(
         '\nOkay, then let\'s start. Remember the nibbles? ' +
-        'Your text is now taken, split in 16-Bit Blocks, and ' +
-        'in each of this block, we have now four nibbles! ' +
-        'First, each nibble is rearranged in a matrix. it looks like this: ' +
+        'Your text is taken, split in 16-Bit Blocks, and ' +
+        'in each block, we have four nibbles, each consiting of four bits.' +
+        'First, each nibble is rearranged in a matrix. It looks like this: ' +
         '\nb0, b2 \n' +
         'b1, b3 \n' +
-        'Where b is a single bit in the nibble. \n \n')
+        'Where b is a single bit in the nibble.\n\n')
 
 # explanation of the four main components
 
 # NibbleSub explanation
     input('Now we can do fun stuff with the nibble matrixes. ' +
           'There are four operations: NibbleSub, which substitutes ' +
-          '(replaces) a nibble with another one. \n')
+          '(replaces) a nibble with another one.\n')
 # ShiftRow explanation
     input(
         'There is also ShiftRow, which switches the lower row of the matrix.' +
-        ' It then looks like this: \n' +
-        'b0, b2 \n' +
-        'b3, b1 \n' +
-        'instead of: \n' +
-        'b0, b2 \n' +
-        'b1, b3 \n')
+        ' It then looks like this:\n' +
+        'b0, b2\n' +
+        'b3, b1\n' +
+        'instead of:\n' +
+        'b0, b2\n' +
+        'b1, b3\n')
 # MixColumn explanation
     input('In MixColumn, each column of the input block is multiplied ' +
           'with a constant matrix to get a new column. If you do not ' +
           'understand matrix multiplication, you should read into it ' +
           'before you continue. \n')
-# TODO ESSLINGER matrix or vector?
 # KeyAddition
     input('You may have wondered where the key is. It is used for the last ' +
           'operation, the KeyAddition. For this, the bock is XORed (' +
