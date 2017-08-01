@@ -102,7 +102,7 @@ def start():
           'before you continue. \n')
 # KeyAddition
     input('You may have wondered where the key is. It is used for the last ' +
-          'operation, the KeyAddition. For this, the bock is XORed (' +
+          'operation, the KeyAddition. For this, the block is XORed (' +
           'exclusive OR) with the key. ')
 
 
