@@ -119,15 +119,15 @@ def start():
     key = input(
         'To make sure only authorized persons can access and decrypt the ' +
         'files, a key is created that can be shared with trusted persons.\n' +
-        'For demonstration purposes, you may now create your own key:')
+        'For demonstration purposes, you may now create your own key:\n')
     if not key:
         print('You did not enter a key. To continue, I created one for you: ')
         for i in range(16):
             key += random.choice(string.ascii_uppercase +
                                  string.ascii_lowercase + string.digits)
-        print(str(key))
+        print(str(key) + '\n')
 
 # KeyAddition
-    input('You may have wondered where the key is. It is used for the last ' +
+    input('We are now going to use the key for the last ' +
           'operation, the KeyAddition. For this, the block is XORed (' +
           'exclusive OR) with the key. ')
