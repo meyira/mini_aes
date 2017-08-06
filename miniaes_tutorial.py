@@ -5,6 +5,8 @@ Disclaimer:
 :author: Lena Heimberger
 :date: 2017-07-31
 """
+import random
+import string
 
 
 def nibble():
@@ -113,10 +115,19 @@ def start():
           'with a constant matrix to get a new column. If you do not ' +
           'understand matrix multiplication, you should read into it ' +
           'before you continue. \n')
+# Key Use
+    key = input(
+        'To make sure only authorized persons can access and decrypt the ' +
+        'files, a key is created that can be shared with trusted persons.\n' +
+        'For demonstration purposes, you may now create your own key:')
+    if not key:
+        print('You did not enter a key. To continue, I created one for you: ')
+        for i in range(16):
+            key += random.choice(string.ascii_uppercase +
+                                 string.ascii_lowercase + string.digits)
+        print(str(key))
+
 # KeyAddition
     input('You may have wondered where the key is. It is used for the last ' +
           'operation, the KeyAddition. For this, the block is XORed (' +
           'exclusive OR) with the key. ')
-
-
-start()
