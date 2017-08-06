@@ -1,4 +1,5 @@
 import argparse
+from miniaes_tutorial import start
 """
 This is the main class of miniaes
 
@@ -8,9 +9,10 @@ This is the main class of miniaes
 
 if __name__ == '__main__':
     #start with a nice welcome message
-    input('Welcome to the MTC3 Mini AES. If you would like a tutorial, please print \'help\'. If you are already familiar with the program, just type \'start\'\n')
-    if input=='help': 
-        miniaes_tutorial.start()
+    starter=input('Welcome to the MTC3 Mini AES. If you would like a tutorial, please print \'help\'. If you are already familiar with the program, just type \'start\'\n')
+    if starter=='help': 
+        print('Let\'s start the tutorial on miniAES!')
+        start()
     else: 
 #TODO   
         print('TODO')
