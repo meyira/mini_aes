@@ -7,6 +7,22 @@ Disclaimer:
 """
 
 
+def nibble():
+    putty = input(
+        'Sorry, I did not understand. Would you like to hear about ' +
+        'nibbles? ' +
+        'Type yes or no ')
+    if putty == 'yes':
+        putty = input(
+            'A nibble\'s size is four bits. ' +
+            'It can be thought as a finite field. ' +
+            'Dou you know what a finite field is? ')
+    elif putty == 'no':
+        return
+    else:
+        nibble()
+
+
 def start():
     # offer to tell people about nibbles.
     putty = input(
@@ -39,10 +55,7 @@ def start():
     elif putty == 'no':
         pass
     else:
-        putty = input(
-            'Sorry, I did not understand. Would you like to hear about ' +
-            'nibbles? ' +
-            'Type yes or no ')
+        nibble()
 
 # blocksize
     print(
