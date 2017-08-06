@@ -10,6 +10,11 @@ import string
 
 
 def nibble():
+    """
+    Pressuring the user to clearly state if they want to know about nibbles.
+    This is only done once, as afterwards, only a clear yes results in more
+    information.
+    """
     putty = input(
         'Sorry, I did not understand. Would you like to hear about ' +
         'nibbles? ' +
@@ -130,4 +135,31 @@ def start():
 # KeyAddition
     input('We are now going to use the key for the last ' +
           'operation, the KeyAddition. For this, the block is XORed (' +
-          'exclusive OR) with the key. ')
+          'exclusive OR) with the key.\n')
+
+# Mini AES Key schedule
+    input('Now, there are three keys generated from the original key. ' +
+          'They are going to be called K0, K1 and K2, and are used ' +
+          'in each round of encrypting the text. A round is a pass '
+          'of plaintext through the encryption proceidure. AES uses '
+          '10 to 14, depending on the key size.\n')
+    input('K0 is used before the first round. The plaintext is now put ' +
+          'through the operations we got to know, which ' +
+          'are used in following order: \n' +
+          'NibbleSub, ShiftRow, MixColumn, KeyAddition, where the ' +
+          'key is XORed with the intermediate result, another NibbleSub ' +
+          'and another ShiftRow, resulting in the first block of plaintext: ')
+    print('              ___        ___        _____        ____ \n' +
+          '             |   |      |  /|      | ^ ^ |      |\\  /|\n' +
+          'Plaintext--->| S |----->| / |----->| | | |----->| \\/ |\n' +
+          '             |___|      |/__|      |_|_|_|      |_/\\_|\n\n' +
+          '            NibbleSub  ShiftRow    MixColumn    KeyAddition \n' +
+          '                                                   |   \n' +
+          '               ____________________________________|   \n' +
+          '              |                                        \n' +
+          '             \ /\n' +
+          '              ___        ___        _____ \n' +
+          '             |   |      |  /|      |ccccc|\n' +
+          '             | S |----->| / |----->|ccccc|\n' +
+          '             |___|      |/__|      |ccccc|\n\n' +
+          '            NibbleSub  ShiftRow    Ciphertext \n')
