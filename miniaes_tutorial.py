@@ -125,24 +125,43 @@ def start():
         'To make sure only authorized persons can access and decrypt the ' +
         'files, a key is created that can be shared with trusted persons.\n' +
         'For demonstration purposes, you may now create your own key:\n')
+    if len(key) == 1:
+        key = input(
+            'The key needs to have at least two letters. Please enter two.')
+    if len(key) == 1:
+        key = input(
+            'The key needs to be longer. I will now create one for you: ')
+        for i in range(16):
+            key += random.choice(string.ascii_uppercase +
+                                 string.ascii_lowercase + string.digits)
+            print(str(key) + '\n')
     if not key:
         print('You did not enter a key. To continue, I created one for you: ')
         for i in range(16):
             key += random.choice(string.ascii_uppercase +
                                  string.ascii_lowercase + string.digits)
         print(str(key) + '\n')
+        input(
+            'Remember, this program is entirely educational! The resulting ' +
+            'ciphertext is easy to break and should not be used ' +
+            'to encrypt sensitive data!')
 
 # KeyAddition
     input('We are now going to use the key for the last ' +
           'operation, the KeyAddition. For this, the block is XORed (' +
           'exclusive OR) with the key.\n')
 
-# Mini AES Key schedule
+# Mini AES Key schedule/key derivation
     input('Now, there are three keys generated from the original key. ' +
           'They are going to be called K0, K1 and K2, and are used ' +
           'in each round of encrypting the text. A round is a pass '
           'of plaintext through the encryption proceidure. AES uses '
           '10 to 14, depending on the key size.\n')
+# key derivation of K0
+    input('For the first round of key derivation, the output key, K0, ' +
+          'is just going to be our original key, both 16 bits long. ' +
+          'If our key is longer, it does not matter, as only the first ' +
+          '16 bits are going to be used. ')
     input('K0 is used before the first round. The plaintext is now put ' +
           'through the operations we got to know, which ' +
           'are used in following order: \n' +
