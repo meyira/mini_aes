@@ -76,7 +76,7 @@ def start():
         'Would you like to know how the ciphertext is ' +
         'generated from the plaintext? ')
     if putty == 'yes':
-        print('AES has so-called Modes of Operation, who determine how' +
+        print('AES has so-called Modes of Operation, which determine how ' +
               'the ciphertext is generated from the plaintext. ' +
               'Mini-AES does not. It just encrypts block by block with the' +
               'key, without taking the result of the previous block in ' +
