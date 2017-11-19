@@ -4,6 +4,8 @@ Here is where the magic encryption happens!
 :date: 31-07-2017
 """
 
+nibble_len = 4  # a nibble is four bits
+
 
 def string_to_binary(string):
     """
@@ -14,8 +16,22 @@ def string_to_binary(string):
     return binary_rep
 
 
+def generate_matrix(binary):
+    """
+    arg0: bitstring
+    return: the bitstring split every fourth character
+    """
+    matrix = [binary[i:i + nibble_len]
+              for i in range(0, len(binary), nibble_len)]
+    return matrix
+
+
 def matrix_nibble_generator(plaintext):
     # get bits
     bitstring = string_to_binary(plaintext)
     # turn them in a matrix
-    # TODO
+    matrix = generate_matrix(bitstring)
+
+
+# matrix_nibble_generator('ahsdawefawefjoawe')
+# for testing
