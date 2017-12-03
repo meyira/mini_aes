@@ -4,7 +4,6 @@ Here is where the magic encryption happens!
 :date: 31-07-2017
 """
 from miniaes_functions import *
-import re
 
 nibble_size = 4  # a nibble is four bits
 
@@ -49,6 +48,28 @@ def nibble_sub(nibblestr):
             substitute.append('0111')
     return substitute
 
+
+def shift_row(substring):
+    """
+        Implements ShiftRow
+        The Third and the first bit of a nibble
+        are exchanged
+        arg0: substring: the already nibble_subbed
+        return: the shifted string
+    """
+    turns = len(substring)
+    i=0
+    print(substring)
+    print("Substring len: " + str(len(substring)) + " takes turns " + str(turns))
+    print(substring[0][1])
+    for i in range(len(substring)):
+        tmp = substring[i][1]
+        substring[i][1] = substring[i][3]
+        substring[i][3] = substring[i][1]
+    print(substring)
+    return substring
+
+
 def matrix_nibble_generator(plaintext):
     # get bits
     bitstring = string_to_binary(plaintext)
@@ -56,6 +77,8 @@ def matrix_nibble_generator(plaintext):
     nibblestr = generate_matrix(bitstring)
     # nibble sub function
     step_1 = nibble_sub(nibblestr)
+    # shift row
+    step_2 = shift_row(step_1)
 
-#matrix_nibble_generator('ahsdawefawefjoawe')
+print(matrix_nibble_generator('This is an example of'))
 # for testing
