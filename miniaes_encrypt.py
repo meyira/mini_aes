@@ -57,17 +57,16 @@ def shift_row(substring):
         arg0: substring: the already nibble_subbed
         return: the shifted string
     """
-    turns = len(substring)
-    i=0
-    print(substring)
-    print("Substring len: " + str(len(substring)) + " takes turns " + str(turns))
-    print(substring[0][1])
+    new_string = []
     for i in range(len(substring)):
-        tmp = substring[i][1]
-        substring[i][1] = substring[i][3]
-        substring[i][3] = substring[i][1]
-    print(substring)
-    return substring
+        tmp_str = ''
+        tmp_str += substring[i][0]
+        tmp_str += substring[i][3]
+        tmp_str += substring[i][2]
+        tmp_str += substring[i][1]
+        ''.join(tmp_str)
+        new_string.append(tmp_str)
+    return new_string
 
 
 def matrix_nibble_generator(plaintext):
@@ -80,5 +79,5 @@ def matrix_nibble_generator(plaintext):
     # shift row
     step_2 = shift_row(step_1)
 
-print(matrix_nibble_generator('This is an example of'))
+# print(matrix_nibble_generator('This is an example of'))
 # for testing
