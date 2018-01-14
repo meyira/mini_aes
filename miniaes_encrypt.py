@@ -1,17 +1,50 @@
-"""
+'''
 Here is where the magic encryption happens!
 :author: Lena Heimberger
 :date: 31-07-2017
-"""
+'''
 from miniaes_functions import *
 
 nibble_size = 4  # a nibble is four bits
+const_column=['0011','1010','1010','0011'] #d0= 3, d1=2, d2=2, d3=3
 
+
+def mix_column(string):
+    '''
+    Implements MixColumn
+    arg0: the subbed and shifted string
+    xors each string nibble with the corresponding constant
+    column nibble, which is defined in the standard)
+    return: the mix_colum result string
+    '''
+    print(string)
+
+
+def shift_row(substring):
+    '''
+        Implements ShiftRow
+        The Third and the first bit of a nibble
+        are exchanged
+        arg0: substring: the already nibble_subbed
+        return: the shifted string
+    '''
+    new_string = []
+    for i in range(len(substring)):
+        tmp_str = ''
+        tmp_str += substring[i][0]
+        tmp_str += substring[i][3]
+        tmp_str += substring[i][2]
+        tmp_str += substring[i][1]
+        ''.join(tmp_str)
+        new_string.append(tmp_str)
+    return new_string
 
 def nibble_sub(nibblestr):
-    """
-    This acts as an S Box in mini AES
-    """
+    '''
+        This acts as an S Box in mini AES
+        arg0: the string of arguments
+        return: a substituation string
+    '''
     substitute = []
     for i in range(len(nibblestr)):
         if nibblestr[i] == '0000':
@@ -48,27 +81,6 @@ def nibble_sub(nibblestr):
             substitute.append('0111')
     return substitute
 
-
-def shift_row(substring):
-    """
-        Implements ShiftRow
-        The Third and the first bit of a nibble
-        are exchanged
-        arg0: substring: the already nibble_subbed
-        return: the shifted string
-    """
-    new_string = []
-    for i in range(len(substring)):
-        tmp_str = ''
-        tmp_str += substring[i][0]
-        tmp_str += substring[i][3]
-        tmp_str += substring[i][2]
-        tmp_str += substring[i][1]
-        ''.join(tmp_str)
-        new_string.append(tmp_str)
-    return new_string
-
-
 def matrix_nibble_generator(plaintext):
     # get bits
     bitstring = string_to_binary(plaintext)
@@ -76,8 +88,14 @@ def matrix_nibble_generator(plaintext):
     nibblestr = generate_matrix(bitstring)
     # nibble sub function
     step_1 = nibble_sub(nibblestr)
+    print("Plaintext: " + plaintext)
+    print("bitstring: " + bitstring)
+    print("nibblestring: " + str(nibblestr))
+    print("Nibble Sub: " + str(step_1))
     # shift row
     step_2 = shift_row(step_1)
+    # mix column
+    step_3 = mix_column(step_2)
 
-# print(matrix_nibble_generator('This is an example of'))
+matrix_nibble_generator('Lena')
 # for testing
