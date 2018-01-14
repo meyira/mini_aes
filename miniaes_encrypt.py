@@ -17,7 +17,7 @@ def mix_column(string):
     column nibble, which is defined in the standard)
     return: the mix_colum result string
     '''
-    print(string)
+    bits=nibbles_to_bits(string) 
 
 
 def shift_row(substring):
@@ -88,10 +88,6 @@ def matrix_nibble_generator(plaintext):
     nibblestr = generate_matrix(bitstring)
     # nibble sub function
     step_1 = nibble_sub(nibblestr)
-    print("Plaintext: " + plaintext)
-    print("bitstring: " + bitstring)
-    print("nibblestring: " + str(nibblestr))
-    print("Nibble Sub: " + str(step_1))
     # shift row
     step_2 = shift_row(step_1)
     # mix column
