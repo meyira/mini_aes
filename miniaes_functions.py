@@ -20,3 +20,11 @@ def generate_matrix(binary):
     matrix = [binary[i:i + nibble_size]
               for i in range(0, len(binary), nibble_size)]
     return matrix
+
+
+def nibbles_to_bits(nibbles):
+    binary = []
+    for i in range(0, len(nibbles)):
+        tmp = str(nibbles[i])
+        binary.append(bin(int(tmp, 2)))
+    return(binary)
