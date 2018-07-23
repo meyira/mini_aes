@@ -28,3 +28,12 @@ def nibbles_to_bits(nibbles):
         tmp = str(nibbles[i])
         binary.append(bin(int(tmp, 2)))
     return(binary)
+
+def string_bitwise_xor(s1, s2): 
+    '''
+    performing bitwise xor of s1 and s2
+    :arg0: first string
+    :arg1: second string
+    :return: xored bit string
+    '''
+    return ''.join(chr(ord(a) ^ ord(b)) for a,b in zip(s1,s2))
