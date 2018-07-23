@@ -6,24 +6,28 @@ Here is where the magic encryption happens!
 from miniaes_functions import *
 
 nibble_size = 4  # a nibble is four bits
-const_column=['0011','1010','1010','0011'] #d0= 3, d1=2, d2=2, d3=3
-
+const_column=nibbles_to_bits(['0011','1010','1010','0011']) #d0= 3, d1=2, d2=2, d3=3
 
 def mix_column(string):
     '''
     Implements MixColumn
     arg0: the subbed and shifted string
     xors each string nibble with the corresponding constant
-    column nibble, which is defined in the standard)
+    column nibble, which is defined in the paper by Chung)
     return: the mix_colum result string
     '''
-    bits=nibbles_to_bits(string) 
+    bits=nibbles_to_bits(string)
+    res=[]
+    bit=nibbles_to_bits(string)
+    for i in range(0, len(bits)):
+        res.append(string_bitwise_xor(bit[i], const_column[i%nibble_size]))
+    return res
 
 
 def shift_row(substring):
     '''
         Implements ShiftRow
-        The Third and the first bit of a nibble
+        The third and the first bit of a nibble
         are exchanged
         arg0: substring: the already nibble_subbed
         return: the shifted string
@@ -81,6 +85,11 @@ def nibble_sub(nibblestr):
             substitute.append('0111')
     return substitute
 
+def key_addition(step_3): 
+    print(step_3)
+    return step_3 
+
+
 def matrix_nibble_generator(plaintext):
     # get bits
     bitstring = string_to_binary(plaintext)
@@ -92,6 +101,8 @@ def matrix_nibble_generator(plaintext):
     step_2 = shift_row(step_1)
     # mix column
     step_3 = mix_column(step_2)
+    # key addition
+    step_4 = key_addition(step_3)
 
 matrix_nibble_generator('Lena')
 # for testing
